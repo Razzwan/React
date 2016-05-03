@@ -33,7 +33,6 @@ var contacts = [
 
 var Contact = React.createClass({
     render: function() {
-        "use strict";
         return <li>
             <p>{this.props.name}</p>
             <p>{this.props.phone}</p>
@@ -65,7 +64,6 @@ var ContactList = React.createClass({
         });
     },
     render: function() {
-        "use strict";
         return <div>
             <input type="text" onChange={this.handleSearch} />
             <ul>
