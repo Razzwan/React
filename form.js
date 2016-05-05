@@ -1,4 +1,5 @@
 // tutorial17.js
+// еде один комент
 var CommentForm = React.createClass({
     getInitialState: function() {
         return {author: '', text: ''};
