@@ -1,14 +1,23 @@
 // tutorial17.js
 var CommentForm = React.createClass({
     getInitialState: function() {
-        return {author: '', text: ''};
+        return {
+            author: '', text: ''
+        };
     },
+
     handleAuthorChange: function(e) {
         this.setState({author: e.target.value});
     },
+
     handleTextChange: function(e) {
         this.setState({text: e.target.value});
     },
+
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
+    },
+
     handleSubmit: function(e) {
         e.preventDefault();
         var author = this.state.author.trim();
@@ -16,11 +25,16 @@ var CommentForm = React.createClass({
         if (!text || !author) {
             return;
         }
-        console.log('tesets');
-        console.log(text);
-        // TODO: send request to the server
+        this.serverRequest = $.post( "ajax/test.html", {author: author, text: text}, function(result) {
+            var lastGist = result[0];
+            this.setState({
+                username: lastGist.owner.login,
+                lastGistUrl: lastGist.html_url
+            });
+        }.bind(this));
         this.setState({author: '', text: ''});
     },
+
     render: function() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
