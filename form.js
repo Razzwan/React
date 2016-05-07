@@ -1,4 +1,6 @@
 // tutorial17.js
+// еде один комент
+// А вот еще изменения.
 var CommentForm = React.createClass({
     getInitialState: function() {
         return {
