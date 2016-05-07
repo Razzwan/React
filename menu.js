@@ -13,15 +13,18 @@ var MenuExample = React.createClass({
 
     clicked: function(index){
 
-        this.serverRequest = $.get("https://api.github.com/users/octocat/gists", function(result){
+        var page = this.props.items[index].page;
 
-            if(!result || !result.data || !result.data.length){
+        this.serverRequest = $.get("/pages/" + page + ".html", function(result){
+            if(!result){
                 return;
             }
 
             this.setState({
                 content: result
             });
+
+            $('#content').html(result);
 
         }.bind(this));
 
@@ -52,22 +55,35 @@ var MenuExample = React.createClass({
                     // Обратите внимание на использование метода bind(). Он делает
                     // index доступным в функции clicked:
 
-                    return <li className={style} onClick={self.clicked.bind(this, index)}>{m}</li>;
+                    return <li className={style} onClick={self.clicked.bind(this, index)}>{m.name}</li>;
 
                 }) }
 
                 </ul>
 
-                <p>Selected: {this.props.items[this.state.focused]}</p>
+                <div>Content: {this.state.content}</div>
             </div>
         );
-
     }
+
 });
 
 // Отображаем компонент меню на странице, передав ему массив с элементами
 
 ReactDOM.render(
-    <MenuExample items={ ['Home', 'Services', 'About', 'Contact us'] } />,
+    <MenuExample items={[
+        {
+            "page": "home",
+            "name": "Домашнаяя страница"
+        },
+        {
+            "page": "about",
+            "name": "О компании"
+        },
+        {
+            "page": "contact",
+            "name": "Страница контактов"
+        }
+    ]} />,
     document.getElementById('menu')
 );
