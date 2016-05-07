@@ -31,6 +31,6 @@ var UserGist = React.createClass({
 });
 
 ReactDOM.render(
-    <UserGist source="https://api.github.com/users/octocat/gists" />,
+    <UserGist source="/data.json" />,
     document.getElementById('github')
 );
