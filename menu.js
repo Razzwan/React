@@ -44,18 +44,18 @@ var MenuExample = React.createClass({
 
         return (
             <div>
-                <ul>{ this.props.items.map(function(m, index){
+                <ul className="nav nav-tabs">{ this.props.items.map(function(m, index){
 
                     var style = '';
 
                     if(self.state.focused == index){
-                        style = 'focused';
+                        style = 'active';
                     }
 
                     // Обратите внимание на использование метода bind(). Он делает
                     // index доступным в функции clicked:
 
-                    return <li className={style} onClick={self.clicked.bind(this, index)}>{m.name}</li>;
+                    return <li role="presentation" className={style} onClick={self.clicked.bind(this, index)}><a href="#">{m.name}</a></li>;
 
                 }) }
 
