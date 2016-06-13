@@ -1,0 +1,34 @@
+{
+  "name": "react.loc",
+  "version": "1.0.0",
+  "description": "Lessons react",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "test": "npmtest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Razzwan/React.git"
+  },
+  "keywords": [
+    "react",
+    "lessons",
+    "reactjs"
+  ],
+  "author": "Razzwan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Razzwan/React/issues"
+  },
+  "homepage": "https://github.com/Razzwan/React#readme"
+}
